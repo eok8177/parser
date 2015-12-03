@@ -4,8 +4,8 @@ use DiDom\Document;
 
 function ufi()
 {
-	// $url = 'http://www.ufi.org/Public/ufimembers/Fiche.aspx?Clef_APPROVED_EVENTS=747&Clef_COMPANIES=190&Rub=UFIApprovedEventsDetails';
-	$url = 'ufi.html';
+	$url = 'http://www.ufi.org/Public/ufimembers/Fiche.aspx?Clef_APPROVED_EVENTS=747&Clef_COMPANIES=190&Rub=UFIApprovedEventsDetails';
+	// $url = 'ufi.html';
 
 	$url_post = 'http://www.ufi.org/Public/ufimembers/UFIApprovedEvents.aspx?Clef_SITESMAPS=81&Clef_SITESMAPS=87';
 	$url_get = 'http://www.ufi.org/Public/ufimembers/UFIApprovedEvents.aspx';
@@ -18,11 +18,13 @@ function ufi()
 
 	$parse = new Parser;
 
-	$html = $parse->curl_post($url_post, $url_get);
-	echo "".print_r($html, true).""; exit();
-
+echo "<br>Parse_______________________________________<br>";
 	$head = $parse->parse_approvedevent($url);
-	echo "<pre>".print_r($head, true)."</pre>"; exit();
+	echo "<pre>".print_r($head, true)."</pre>";
+
+echo "<br>Get links<br>_______________________________________";
+	$html = $parse->curl_post($url_post, $url_get);
+	echo "".print_r($html, true).""; 
 }
 
 
